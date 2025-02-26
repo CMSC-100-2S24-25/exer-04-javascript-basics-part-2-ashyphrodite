@@ -17,6 +17,9 @@ node test.js
 
 The challenges I encountered while doing this exercise in general are really just finding the right functions for an specific task because I don't memorize everything.
 
+## Key Takeaways
+
+Node package manager is incredibly useful for using functions that are already implemented before by other programmers. This speeds up development because you only have to read the documentation for the usage. Personally, although I knew and have used this in the past, this served as a refresher.
 
 ## References
 - [uuid](https://www.npmjs.com/package/uuid)
