@@ -56,8 +56,13 @@ function addAccount(userInfo) {
         return null;
     }
 
+    // create users.txt if it doesn't exist yet. if it does, open for append
+    let file = fs.openSync("users.txt", "a");
 
+    // write user info to the file
+    fs.writeSync(file, `${firstName},${lastName},${email},${age},${generateUniqueID(firstName, lastName)}\n`);
 
+    return true;        // return a true value to signal success to the caller
 }
 
 export { generateUniqueID };
