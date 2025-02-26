@@ -4,21 +4,60 @@ import validator from 'validator';
 
 function generateUniqueID(string1, string2) {
     // valdate input paramaters
-    if(typeof string1 !== "string" || typeof string2 !== "string") {
+    if (typeof string1 !== "string" || typeof string2 !== "string") {
+        return null;
+    }
+
+    if (!validator.isAlpha(string1, 'en-US', { ignore: '-' }) || !validator.isAlpha(string2, 'en-US', { ignore: '-' })) {
         return null;
     }
 
     let result = "";                        // empty string for the result
+
     result += string1[0].toLowerCase();     // add lowercased first letter of first string
+
+    // remove all non-alphabetic characters from the string of string2
+    // one-liner: split each character and joins all the alpha
+    string2 = string2.split('').filter(ch => validator.isAlpha(ch)).join('');
+
     result += string2.toLowerCase();        // add lowercased all of the second string
-    result += uuidv4();                     // add uniqueID based on the two strings
-    result = result.split("-")[0];          // remove everything after first hypen
+    let uniqueID = uuidv4().split("-")[0];  // add uniqueID based on the two strings, remove after first hypen
+    result += uniqueID;                     // add uniqueID to the result
 
     return result;
 }
 
 function addAccount(userInfo) {
-    
+    // userInfo must be an array of length 4
+    if (!Array.isArray(userInfo) || userInfo.length !== 4) {
+        return null;
+    }
+
+    // unpack array values
+    let [firstName, lastName, email, age] = userInfo;
+
+    // validate input values. should be: string, string, string, number
+    if (typeof firstName !== "string" || typeof lastName !== "string" || typeof email !== "string" || typeof age !== "number") {
+        return null;
+    }
+
+    // validate first and last names. should be non-empty alpha only
+    if (!validator.isAlpha(firstName, 'en-US', { ignore: '-' }) || !validator.isAlpha(lastName, 'en-US', { ignore: '-' })) {
+        return null;
+    }
+
+    // validate email. should be valid email
+    if (!validator.isEmail(email)) {
+        return null;
+    }
+
+    // validate age. should be at least 18
+    if (age < 18) {
+        return null;
+    }
+
+
+
 }
 
 export { generateUniqueID };
