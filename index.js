@@ -22,3 +22,4 @@ function addAccount(userInfo) {
 }
 
 export { generateUniqueID };
+export { addAccount };
