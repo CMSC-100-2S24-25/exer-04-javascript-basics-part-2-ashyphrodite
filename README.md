@@ -5,7 +5,13 @@
 
 ## Description
 
-This exercise tackles the use node packages—from installation to calling the specific functions. The exercise itself is about implementing a simple user logging system with basic validation. It also included writing to files in node. 
+This exercise tackles the use node packages—from installation to calling the specific functions. The exercise itself is about implementing a simple user logging system with basic validation. It also included writing to files in node.
+
+## Instructions
+After cloning the repo, what we need to run is the `test.js` file and not `index.js`. In your terminal, type:
+```bash
+node test.js
+```
 
 ## Challenges Encountered
 
