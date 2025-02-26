@@ -17,4 +17,8 @@ function generateUniqueID(string1, string2) {
     return result;
 }
 
+function addAccount(userInfo) {
+    
+}
+
 export { generateUniqueID };
