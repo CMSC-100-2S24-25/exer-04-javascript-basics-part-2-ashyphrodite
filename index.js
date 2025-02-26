@@ -17,4 +17,4 @@ function generateUniqueID(string1, string2) {
     return result;
 }
 
-console.log(generateUniqueID("Alan", "Turing")); // johndoeuniqueID
+export { generateUniqueID };
