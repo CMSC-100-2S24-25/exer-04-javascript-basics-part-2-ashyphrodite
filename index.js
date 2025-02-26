@@ -30,7 +30,7 @@ function generateUniqueID(string1, string2) {
 function addAccount(userInfo) {
     // userInfo must be an array of length 4
     if (!Array.isArray(userInfo) || userInfo.length !== 4) {
-        return null;
+        return false;
     }
 
     // unpack array values
@@ -38,22 +38,22 @@ function addAccount(userInfo) {
 
     // validate input values. should be: string, string, string, number
     if (typeof firstName !== "string" || typeof lastName !== "string" || typeof email !== "string" || typeof age !== "number") {
-        return null;
+        return false;
     }
 
     // validate first and last names. should be non-empty alpha only
     if (!validator.isAlpha(firstName, 'en-US', { ignore: '-' }) || !validator.isAlpha(lastName, 'en-US', { ignore: '-' })) {
-        return null;
+        return false;
     }
 
     // validate email. should be valid email
     if (!validator.isEmail(email)) {
-        return null;
+        return false;
     }
 
     // validate age. should be at least 18
     if (age < 18) {
-        return null;
+        return false;
     }
 
     // create users.txt if it doesn't exist yet. if it does, open for append
